@@ -1,0 +1,26 @@
+{
+    "name":"Hello Extensions",
+    "description": "Test Base Extensions",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action":{
+        "default_popup":"templates/popup.html",
+        "default_title":"Popup",
+        "default_icon":"./static/images/popup.png"
+    },
+    "background":{
+        "service_worker": "./static/js/background.js"
+    },
+    "options_page":"options.html",
+    "content_scripts":[
+        {
+            "matches": ["<all_urls>"],
+            "css": ["./static/css/content.css"],
+            "js": ["./static/js/content.js", "./static/js/title.js"],
+            "run_at": "document_end"
+        }
+    ],
+    "permissions": ["tabs","activeTab","scripting","storage"],
+    "host_permissions": ["*://*/*"],
+    "devtools_page":"devtools.html"
+}
